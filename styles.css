@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
+
+body {
+  font-family: "Acme", sans-serif;
+}
+
+#wrapper {
+  padding: 10px;
+  width: 50%;
+  height: 165%;
+  margin: auto;
+  border-width: 4px;
+  border-style: solid;
+  border-color: #000000;
+  border-radius: 25px;
+}
+
+.detailHeadings {
+  background-color: #f4f0ec;
+  border-radius: 3px;
+  box-shadow: 0 0 1px 0.2px;
+}
+
+h1 {
+  text-align: center;
+  background-color: #cb842e;
+  color: #000000;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 10px;
+  box-shadow: 0 0 2px 0.2px;
+}
+
+.h3 {
+  background-color: #cb842e;
+  color: #000000;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #000000;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 0.2px;
+}
+
+#submitBtn {
+  margin-top: 1em;
+}
+
+.myBtn {
+  box-shadow: inset 0px 0px 10px -2px #fce2c1;
+  background: linear-gradient(to bottom, #cb842e 5%, #fb9e25 100%);
+  background-color: #cb842e;
+  border-radius: 10px;
+  border: 1px solid #eeb44f;
+  display: inline-block;
+  cursor: pointer;
+  color: #000000;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 15px;
+  text-decoration: none;
+  text-shadow: 0px 0px 8px #cc9f52;
+}
+.myBtn:hover {
+  background: linear-gradient(to bottom, #fb9e25 5%, #ffc477 100%);
+  background-color: #fb9e25;
+}
+.myBtn:active {
+  position: relative;
+  top: 1px;
+}
+
+#dialog {
+  text-align: center;
+}
+
+#slider-range-weight,
+#slider-range-height {
+  width: 50%;
+}
+
+#red,
+#green,
+#blue {
+  float: left;
+  clear: left;
+  width: 300px;
+  margin: 15px;
+}
+
+#swatch {
+  width: 120px;
+  height: 100px;
+  margin-top: 18px;
+  margin-left: 350px;
+  background-image: none;
+}
+
+#red .ui-slider-range {
+  background: #ef2929;
+}
+
+#red .ui-slider-handle {
+  border-color: #ef2929;
+}
+
+#green .ui-slider-range {
+  background: #1ad157;
+}
+
+#green .ui-slider-handle {
+  border-color: #1ad157;
+}
+
+#blue .ui-slider-range {
+  background: #2729b6;
+}
+
+#blue .ui-slider-handle {
+  border-color: #2729b6;
+}

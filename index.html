@@ -1,0 +1,247 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alien Sighting</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/jqueryui/jquery-ui.min.css" />
+    <link rel="stylesheet" href="/jqueryui/jquery-ui.theme.min.css" />
+    <link rel="stylesheet" href="/jqueryui/jquery-ui.structure.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/jqueryui/external/jquery/jquery.js"></script>
+    <script src="/jqueryui/jquery-ui.min.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>Report Your Alien Sighting!</h1>
+
+      <form id="alienForm" action="#">
+        <h3><span class="h3">Sighting Date:</span></h3>
+        <div id="date"></div>
+
+        <h3><span class="h3">Alien Type:</span></h3>
+        <div id="radio-container">
+          <input
+            class="radiobtn"
+            type="radio"
+            id="humanlike"
+            name="alientype"
+            value="human"
+          />
+          <label for="humanlike">Human-like</label>
+
+          <input
+            class="radiobtn"
+            type="radio"
+            id="wormlike"
+            name="alientype"
+            value="worm"
+          />
+          <label for="wormlike">Worm-like</label>
+
+          <input
+            class="radiobtn"
+            type="radio"
+            id="insectlike"
+            name="alientype"
+            value="insect"
+          />
+          <label for="insectlike">Insect-like</label>
+
+          <input
+            class="radiobtn"
+            type="radio"
+            id="fishlike"
+            name="alientype"
+            value="fish"
+          />
+          <label for="fishlike">Fish-like</label>
+
+          <input
+            class="radiobtn"
+            type="radio"
+            id="birdlike"
+            name="alientype"
+            value="bird"
+          />
+          <label for="birdlike">Bird-like</label>
+        </div>
+
+        <h3><span class="h3">Alien Details:</span></h3>
+        <div>
+          <label class="detailHeadings" for="weight">Weight(lbs.):</label><br />
+          <input
+            type="text"
+            id="weight"
+            name="weight"
+            readonly
+            style="border: 0; color: #f6931f; font-weight: bold"
+          />
+        </div>
+        <div id="slider-range-weight"></div>
+        <br />
+
+        <div>
+          <label class="detailHeadings" for="height">Height(ft.):</label><br />
+          <input
+            type="text"
+            id="height"
+            name="height"
+            readonly
+            style="border: 0; color: #f6931f; font-weight: bold"
+          />
+        </div>
+        <div id="slider-range-height"></div>
+        <br />
+
+        <div>
+          <label class="detailHeadings" for="numOfEyes"># of Eyes:</label><br />
+          <input type="text" id="numOfEyes" name="value" />
+        </div>
+        <br />
+
+        <div>
+          <label class="detailHeadings" for="numOfArms"># of Arms:</label><br />
+          <input type="text" id="numOfArms" name="numOfArms" />
+        </div>
+        <br />
+
+        <div>
+          <label class="detailHeadings" for="numOfLegs"># of Legs:</label><br />
+          <input type="text" id="numOfLegs" name="numOfLegs" />
+        </div>
+        <br />
+
+        <div id="alienColor">
+          <p><span class="detailHeadings">Alien Main Color:</span></p>
+          <div id="red"></div>
+          <div id="green"></div>
+          <div id="blue"></div>
+          <div id="swatch" class="ui-corner-all"></div>
+        </div>
+        <br />
+
+        <div id="dialog" title="Thank You!">
+          <p>Your sighting has been submitted. Keep your eyes to the skies!</p>
+          <img src="/images/ufo.png" alt="UFO" />
+        </div>
+        <br />
+        <a href="#" class="myBtn" id="submitBtn">Submit</a>
+      </form>
+    </div>
+
+    <script>
+      $(function () {
+        $("#date").datepicker({
+          changeYear: true,
+        });
+
+        $(".radiobtn").checkboxradio({
+          icon: false,
+        });
+        $("#radio-container").controlgroup();
+
+        $("#slider-range-weight").slider({
+          range: "max",
+          min: 1,
+          max: 300,
+          value: 20,
+          slide: function (event, ui) {
+            $("#weight").val(ui.value);
+          },
+        });
+        $("#weight").val($("#slider-range-weight").slider("value"));
+
+        $("#slider-range-height").slider({
+          range: "max",
+          min: 1,
+          max: 50,
+          value: 10,
+          slide: function (event, ui) {
+            $("#height").val(ui.value);
+          },
+        });
+        $("#height").val($("#slider-range-height").slider("value"));
+
+        $("#numOfEyes").spinner({
+          spin: function (event, ui) {
+            if (ui.value > 10) {
+              $(this).spinner("value", -10);
+              return false;
+            } else if (ui.value < -10) {
+              $(this).spinner("value", 10);
+              return false;
+            }
+          },
+        });
+
+        $("#numOfArms").spinner({
+          spin: function (event, ui) {
+            if (ui.value > 10) {
+              $(this).spinner("value", -10);
+              return false;
+            } else if (ui.value < -10) {
+              $(this).spinner("value", 10);
+              return false;
+            }
+          },
+        });
+
+        $("#numOfLegs").spinner({
+          spin: function (event, ui) {
+            if (ui.value > 10) {
+              $(this).spinner("value", -10);
+              return false;
+            } else if (ui.value < -10) {
+              $(this).spinner("value", 10);
+              return false;
+            }
+          },
+        });
+
+        function hexFromRGB(r, g, b) {
+          var hex = [r.toString(16), g.toString(16), b.toString(16)];
+          $.each(hex, function (nr, val) {
+            if (val.length === 1) {
+              hex[nr] = "0" + val;
+            }
+          });
+          return hex.join("").toUpperCase();
+        }
+        function refreshSwatch() {
+          var red = $("#red").slider("value"),
+            green = $("#green").slider("value"),
+            blue = $("#blue").slider("value"),
+            hex = hexFromRGB(red, green, blue);
+          $("#swatch").css("background-color", "#" + hex);
+        }
+        $("#red, #green, #blue").slider({
+          orientation: "horizontal",
+          range: "min",
+          max: 255,
+          value: 127,
+          slide: refreshSwatch,
+          change: refreshSwatch,
+        });
+        $("#red").slider("value", 255);
+        $("#green").slider("value", 140);
+        $("#blue").slider("value", 60);
+
+        $("#dialog").dialog({
+          autoOpen: false,
+          show: {
+            effect: "blind",
+            duration: 500,
+          },
+          hide: {
+            effect: "explode",
+            duration: 1000,
+          },
+        });
+        $("#submitBtn").on("click", function () {
+          $("#dialog").dialog("open");
+        });
+      });
+    </script>
+  </body>
+</html>
